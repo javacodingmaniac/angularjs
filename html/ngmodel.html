@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+	<meta charset="UTF-8">
+	<title>AngularJS | Welcome</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<script src="../js/ngmodel.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/ngmodel.css">
+</head>
+<body>
+	<div ng-controller="mycntrl">
+		Name: <input type="text" ng-model="name"></input>
+		{{name}}
+		
+		<form name="myform">
+			NAme: <input type="text" required ng-model="emp.name"></input></br>
+			<!--Email: <input type="text" required ng-pattern="pattern" ng-model="emp.email"></input>
+			</br>
+			<button type="submit" ng-disabled=(myform.$invalid) ng-click="Save(emp,myform)">Submit</button>-->
+			Email: <input type="text" required ng-model="emp.email"></input>
+			</br>
+			<button type="submit" ng-click="Save(emp,myform)">Submit</button>
+		</form>
+	</div>
+</body>

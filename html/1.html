@@ -4,7 +4,87 @@
 	<meta charset="UTF-8">
 	<title>AngularJS | Welcome</title>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<script src="../js/1.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/1.css">
 </head>
-<body>
-
+<body ng-app="dirApp" ng-controller="mycontroller">
+	<div ng-style="mystyle" ng-bind="welcome"></div>
+	<div ng-class="myclass" ng-bind="welcome"></div>
+	{{welcome}} <br/>
+	Full name : {{fullname.firstname}}	{{fullname.lastname}}<br/>
+	<div ng-bind-template="{{fullname.firstname}}	{{fullname.lastname}}"></div>
+	<div ng-show="visibleelement">show the element</div>
+	<div ng-hide="visibleelement">hide the element</div>
+	<button ng--disabled="disablebtn" type="button" >Click Me</button>
+	<div>{{10*3}}</div>
+	<div ng-non-bindable="nonbindable">{{10*3}}</div>
+	<div>{{[1,2,3][1]}}</div>
+	{{3.567877656|number:2}}</br>
+	{{56|currency}}
+	{{fullname|json}}
+	<ul>
+		<li ng-repeat="emp in emps">
+			<div>
+				Id:{{emp.id}}<br/>
+				Name:{{emp.name}}<br/>
+				Name:{{emp.name|uppercase}}<br/>
+				Votecount:{{emp.votecount}}<br/>
+				<button type="button" ng-click="upvote(emp)">Up Vote</button>
+				<button type="button" ng-click="downvote(emp)">Down Vote</button>
+			</div>
+		</li>
+	</ul>
+	
+	<ul>
+		<li ng-repeat="emp in emps|orderBy:name | limitTo:2">
+			<div>
+				Id:{{emp.id}}<br/>
+				Name:{{emp.name}}<br/>
+				Name:{{emp.name|uppercase}}<br/>
+				Votecount:{{emp.votecount}}<br/>
+				<button type="button" ng-click="upvote(emp)">Up Vote</button>
+				<button type="button" ng-click="downvote(emp)">Down Vote</button>
+			</div>
+		</li>
+	</ul>
+	
+	<!--<select ng-model="query">
+		<option selected value="">All</option>
+		<option selected value="TL">TL</option>
+		<option selected value="SD">SD</option>
+		<option selected value="MGR">MGR</option>
+	</select>-->
+	<select ng-model="query.designation">
+		<option selected value="">All</option>
+		<option selected value="TL">TL</option>
+		<option selected value="SD">SD</option>
+		<option selected value="MGR">MGR</option>
+	</select>
+	<ul>
+		<li ng-repeat="emp in emps|orderBy:name|filter:query">
+			<div>
+				Id:{{emp.id}}<br/>
+				Name:{{emp.name}}<br/>
+				Name:{{emp.name|uppercase}}<br/>
+				Designation:{{emp.designation}}<br/>
+				Votecount:{{emp.votecount}}<br/>
+				<button type="button" ng-click="upvote(emp)">Up Vote</button>
+				<button type="button" ng-click="downvote(emp)">Down Vote</button>
+			</div>
+		</li>
+	</ul>
+	
+	<ul>
+		<li ng-repeat="emp in emps|orderBy:name|filter:query">
+			<div>
+				Id:{{emp.id}}<br/>
+				Name:{{emp.name}}<br/>
+				Name:{{emp.name|uppercase}}<br/>
+				Designation:{{emp.designation|myfilter}}<br/>
+				Votecount:{{emp.votecount}}<br/>
+				<button type="button" ng-click="upvote(emp)">Up Vote</button>
+				<button type="button" ng-click="downvote(emp)">Down Vote</button>
+			</div>
+		</li>
+	</ul>
 </body>
